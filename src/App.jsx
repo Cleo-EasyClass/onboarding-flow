@@ -137,12 +137,13 @@ async function buildScene(onProgress) {
 }
 
 const TABS = [
-  { id: 'mindmap',  label: '🕸️ Mind Map',   desc: 'Animated spider view' },
-  { id: 'canvas',   label: '🗂️ All Screens', desc: 'Every screenshot organized' },
+  { id: 'beam',     label: '✨ Animated Beam', desc: 'Left panel live preview — click through all 5 steps' },
+  { id: 'mindmap',  label: '🕸️ Mind Map',      desc: 'Animated spider view' },
+  { id: 'canvas',   label: '🗂️ All Screens',   desc: 'Every screenshot organized' },
 ]
 
 export default function App() {
-  const [tab, setTab] = useState('mindmap')
+  const [tab, setTab] = useState('beam')
   const [initialData, setInitialData] = useState(null)
   const [progress, setProgress] = useState('Initializing...')
   const [loading, setLoading] = useState(false)
@@ -192,6 +193,9 @@ export default function App() {
 
       {/* Content */}
       <div style={{ position: 'fixed', top: 52, left: 0, right: 0, bottom: 0 }}>
+        {tab === 'beam' && (
+          <iframe src="/beam.html" style={{ width: '100%', height: '100%', border: 'none' }} title="Animated Beam"/>
+        )}
         {tab === 'mindmap' && <MindMap />}
 
         {tab === 'canvas' && loading && (
