@@ -40,22 +40,18 @@ async function buildCanvas(editor) {
     props: { text: '🎯  Dashboard Tour — 5 Stops  →  Pro Paywall', size: 'xl', font: 'sans', align: 'start', color: 'green', autoSize: true }
   })
 
-  // Images
+  // Images — use direct https:// URLs (tldraw rejects blob: URLs)
   for (const s of SCREENS) {
     const { x, y } = screenPos(s.row, s.col)
     const color = s.row === 0 ? 'violet' : 'green'
 
-    // Fetch and register asset
-    const resp = await fetch(s.url)
-    const blob = await resp.blob()
     const assetId = `asset:${s.key}`
-    const objectUrl = URL.createObjectURL(blob)
 
     editor.createAssets([{
       id: assetId,
       type: 'image',
       typeName: 'asset',
-      props: { src: objectUrl, w: 1440, h: 900, name: s.key, mimeType: 'image/png', isAnimated: false },
+      props: { src: s.url, w: 1440, h: 900, name: s.key, mimeType: 'image/png', isAnimated: false },
       meta: {}
     }])
 
