@@ -1,37 +1,99 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
+:root{color-scheme:light;}
 *{margin:0;padding:0;box-sizing:border-box;}
-html{background:#ffffff;}body{color-scheme:light;width:1440px;height:900px;overflow:hidden;font-family:'Inter',system-ui,sans-serif;background:#fff;}
+html,body{width:1440px;height:900px;overflow:hidden;font-family:'Inter',system-ui,sans-serif;background:#ffffff;}
 .layout{display:flex;width:1440px;height:900px;}
-.left{width:300px;min-width:300px;height:900px;background:#f3f0ff;display:flex;flex-direction:column;padding:40px 28px;border-right:1px solid #ede9fe;}
-.logo{height:28px;width:auto;margin-bottom:40px;}
-.setup-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#a78bfa;margin-bottom:20px;}
-.steps{display:flex;flex-direction:column;gap:0;}
+.left{width:300px;min-width:300px;height:900px;background:#f3f0ff;display:flex;flex-direction:column;padding:36px 26px;border-right:1px solid #ede9fe;}
+.wordmark{font-size:20px;font-weight:800;letter-spacing:-.03em;margin-bottom:36px;color:#09090b;}
+.wordmark span{background:linear-gradient(135deg,#8b5cf6,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.setup-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#a78bfa;margin-bottom:16px;}
+.steps{display:flex;flex-direction:column;}
 .step{display:flex;align-items:flex-start;gap:12px;padding:8px 0;position:relative;}
-.step:not(:last-child)::after{content:'';position:absolute;left:15px;top:34px;width:2px;height:calc(100% - 10px);background:#ddd6fe;}
-.dot{width:30px;height:30px;border-radius:50%;border:2px solid #ddd6fe;background:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#a78bfa;flex-shrink:0;z-index:1;}
-.dot.active{background:#8a6bfc;border-color:#8a6bfc;color:white;box-shadow:0 0 0 4px #8a6bfc22;}
+.step:not(:last-child)::after{content:'';position:absolute;left:13px;top:33px;width:2px;height:calc(100% - 6px);background:#ddd6fe;}
+.dot{width:26px;height:26px;border-radius:50%;border:2px solid #ddd6fe;background:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#a78bfa;flex-shrink:0;z-index:1;}
+.dot.active{background:#8a6bfc;border-color:#8a6bfc;color:white;box-shadow:0 0 0 3px #8a6bfc22;}
 .dot.done{background:#22c55e;border-color:#22c55e;color:white;}
-.sname{font-size:13px;font-weight:500;color:#a78bfa;padding-top:6px;line-height:1;}
+.sname{font-size:12px;font-weight:500;color:#a78bfa;padding-top:4px;}
 .sname.active{font-weight:700;color:#1e1b4b;}
 .sname.done{color:#22c55e;}
-.ssub{font-size:11px;color:#c4b5f7;margin-top:2px;}
+.ssub{font-size:10px;color:#c4b5f7;margin-top:1px;}
 .ssub.active{color:#7c3aed;}
-.right{flex:1;height:900px;background:#ffffff;display:flex;flex-direction:column;padding:56px 80px 48px;}
-.prog{display:flex;gap:5px;margin-bottom:44px;}
+.right{flex:1;height:900px;background:#ffffff;display:flex;flex-direction:column;padding:52px 72px 44px;}
+.prog{display:flex;gap:5px;margin-bottom:40px;}
 .seg{flex:1;height:3px;border-radius:99px;background:#e4e4e7;}
 .seg.on{background:#8a6bfc;}
-.eye{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#8a6bfc;margin-bottom:12px;}
-h1{font-size:40px;font-weight:800;color:#09090b;line-height:1.15;margin-bottom:8px;letter-spacing:-.02em;}
-.sub{font-size:15px;color:#6b7280;margin-bottom:32px;line-height:1.5;}
-.cta{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:24px;}
-.back{font-size:14px;font-weight:500;color:#9ca3af;background:none;border:none;cursor:pointer;font-family:inherit;}
-.btn{padding:0 36px;height:50px;background:#8a6bfc;color:white;border:none;border-radius:11px;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px #8a6bfc40;font-family:inherit;}
-.btn:disabled{background:#e5e7eb;color:#9ca3af;box-shadow:none;cursor:not-allowed;}
+.eye{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#8a6bfc;margin-bottom:10px;}
+h1{font-size:38px;font-weight:800;color:#09090b;line-height:1.15;margin-bottom:8px;letter-spacing:-.02em;}
+.sub{font-size:15px;color:#6b7280;margin-bottom:28px;}
+.cta{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:20px;}
+.back-btn{font-size:13px;font-weight:500;color:#9ca3af;background:none;border:none;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:5px;}
+.go-btn{padding:0 28px;height:46px;background:#8a6bfc;color:white;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px #8a6bfc40;font-family:inherit;display:flex;align-items:center;gap:7px;}
+.go-btn:disabled{background:#e5e7eb;color:#9ca3af;box-shadow:none;cursor:not-allowed;}
+.card{display:flex;align-items:center;gap:12px;padding:13px 16px;border:1.5px solid #e5e7eb;border-radius:10px;cursor:pointer;background:#ffffff;transition:all .15s;}
+.card:hover{border-color:#c4b5f7;}
+.card.sel{border-color:#8a6bfc;background:#faf8ff;}
+.ci{width:34px;height:34px;border-radius:8px;background:#f3f0ff;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#7c3aed;}
+.ci i,.ci svg{width:16px;height:16px;}
+.ck{margin-left:auto;width:19px;height:19px;border-radius:50%;background:#8a6bfc;color:white;display:flex;align-items:center;justify-content:center;flex-shrink:0;opacity:0;transition:opacity .15s;}
+.ck i,.ck svg{width:10px;height:10px;}
+.card.sel .ck{opacity:1;}
+.inp{width:100%;padding:13px 16px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:16px;font-weight:600;color:#09090b;font-family:inherit;outline:none;background:#ffffff;transition:border-color .15s,box-shadow .15s;}
+.inp:focus{border-color:#8a6bfc;box-shadow:0 0 0 3px #8a6bfc15;}
+.inp::placeholder{color:#d1d5db;font-weight:400;}
+.fl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#9ca3af;margin-bottom:7px;}
+.pill{padding:9px 0;border:1.5px solid #e5e7eb;border-radius:9px;cursor:pointer;text-align:center;background:#ffffff;transition:all .14s;}
+.pill.sel{border-color:#8a6bfc;background:#faf8ff;}
+.pn{font-size:13px;font-weight:700;color:#374151;}
+.pill.sel .pn{color:#7c3aed;}
+.ps{font-size:9px;color:#9ca3af;margin-top:1px;}
+/* LP streaming */
+.lp-gen-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#8a6bfc;margin-bottom:10px;display:flex;align-items:center;gap:5px;}
+.lp-gen-label i,.lp-gen-label svg{width:11px;height:11px;}
+.lp-box{background:white;border-radius:10px;padding:14px;border:1px solid #ede9fe;flex:1;overflow:hidden;display:flex;flex-direction:column;}
+.lp-ttl{font-size:12px;font-weight:800;color:#1e1b4b;line-height:1.3;margin-bottom:1px;}
+.lp-mt{font-size:10px;color:#a78bfa;margin-bottom:11px;}
+.lp-s{margin-bottom:9px;}
+.lp-st{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#7c3aed;margin-bottom:4px;}
+.lp-li{font-size:10px;color:#374151;line-height:1.5;padding-left:11px;position:relative;margin-bottom:2px;}
+.lp-li::before{content:'•';position:absolute;left:0;color:#a78bfa;}
+.cursor{display:inline-block;width:2px;height:11px;background:#8a6bfc;margin-left:1px;vertical-align:middle;animation:blink .7s step-end infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.lp-footer{margin-top:auto;padding-top:8px;border-top:1px solid #f0ebff;}
+.lp-pb{height:3px;background:#ede9fe;border-radius:99px;margin-top:3px;overflow:hidden;}
+.lp-pf{height:100%;background:linear-gradient(to right,#8a6bfc,#a78bfa);border-radius:99px;}
+.dp{display:flex;gap:3px;align-items:center;}
+.dp span{width:4px;height:4px;border-radius:50%;background:#8a6bfc;animation:dpa .9s ease-in-out infinite;}
+.dp span:nth-child(2){animation-delay:.2s;}
+.dp span:nth-child(3){animation-delay:.4s;}
+@keyframes dpa{0%,100%{opacity:.3}50%{opacity:1}}
 </style></head><body>
-<div class="layout"><div class="left"><div style="font-size:22px;font-weight:800;letter-spacing:-.03em;margin-bottom:40px;font-family:Inter,sans-serif;">
-  EasyClass<span style="background:linear-gradient(135deg,#8b5cf6,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">AI</span>
-</div><div class="setup-label">Your Setup</div><div class="steps"><div class="step"><div class="dot done">✓</div><div><div class="sname done">Your Name</div><div class="ssub">What to call you</div></div></div><div class="step"><div class="dot done">✓</div><div><div class="sname done">Your Role</div><div class="ssub">Type of educator</div></div></div><div class="step"><div class="dot done">✓</div><div><div class="sname done">Grade Level</div><div class="ssub">Who you teach</div></div></div><div class="step"><div class="dot active">4</div><div><div class="sname active">Your Subject</div><div class="ssub active">What you teach</div></div></div><div class="step"><div class="dot">5</div><div><div class="sname">How You Found Us</div><div class="ssub">Just curious!</div></div></div><div class="step"><div class="dot">6</div><div><div class="sname">First Topic</div><div class="ssub">Toolkit builds here ✨</div></div></div></div></div><div class="right"><div class="prog"><div class="seg on"></div><div class="seg on"></div><div class="seg on"></div><div class="seg on"></div><div class="seg"></div><div class="seg"></div></div><div class="eye">Step 4 of 6</div><h1>What subject do you teach?</h1><p class="sub">Pick your primary — you can adjust anytime.</p><div id="sj" style="display:grid;grid-template-columns:1fr 1fr;gap:9px;"><div onclick="sel(this)" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:1.5px solid #e5e7eb;border-radius:10px;cursor:pointer;background:white;transition:all .14s;"><span style="font-size:20px;">📐</span><span style="font-size:13px;font-weight:600;color:#111;">Math</span><span class="chk" style="margin-left:auto;width:18px;height:18px;border-radius:50%;background:#8a6bfc;color:white;font-size:10px;display:flex;align-items:center;justify-content:center;opacity:0;flex-shrink:0;">✓</span></div><div onclick="sel(this)" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:1.5px solid #e5e7eb;border-radius:10px;cursor:pointer;background:white;transition:all .14s;"><span style="font-size:20px;">🔬</span><span style="font-size:13px;font-weight:600;color:#111;">Science</span><span class="chk" style="margin-left:auto;width:18px;height:18px;border-radius:50%;background:#8a6bfc;color:white;font-size:10px;display:flex;align-items:center;justify-content:center;opacity:0;flex-shrink:0;">✓</span></div><div onclick="sel(this)" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:1.5px solid #e5e7eb;border-radius:10px;cursor:pointer;background:white;transition:all .14s;"><span style="font-size:20px;">📖</span><span style="font-size:13px;font-weight:600;color:#111;">English / ELA</span><span class="chk" style="margin-left:auto;width:18px;height:18px;border-radius:50%;background:#8a6bfc;color:white;font-size:10px;display:flex;align-items:center;justify-content:center;opacity:0;flex-shrink:0;">✓</span></div><div onclick="sel(this)" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:1.5px solid #e5e7eb;border-radius:10px;cursor:pointer;background:white;transition:all .14s;"><span style="font-size:20px;">🌍</span><span style="font-size:13px;font-weight:600;color:#111;">Social Studies</span><span class="chk" style="margin-left:auto;width:18px;height:18px;border-radius:50%;background:#8a6bfc;color:white;font-size:10px;display:flex;align-items:center;justify-content:center;opacity:0;flex-shrink:0;">✓</span></div><div onclick="sel(this)" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:1.5px solid #e5e7eb;border-radius:10px;cursor:pointer;background:white;transition:all .14s;"><span style="font-size:20px;">🎨</span><span style="font-size:13px;font-weight:600;color:#111;">Art & Music</span><span class="chk" style="margin-left:auto;width:18px;height:18px;border-radius:50%;background:#8a6bfc;color:white;font-size:10px;display:flex;align-items:center;justify-content:center;opacity:0;flex-shrink:0;">✓</span></div><div onclick="sel(this)" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:1.5px solid #e5e7eb;border-radius:10px;cursor:pointer;background:white;transition:all .14s;"><span style="font-size:20px;">💻</span><span style="font-size:13px;font-weight:600;color:#111;">Computer Science</span><span class="chk" style="margin-left:auto;width:18px;height:18px;border-radius:50%;background:#8a6bfc;color:white;font-size:10px;display:flex;align-items:center;justify-content:center;opacity:0;flex-shrink:0;">✓</span></div><div onclick="sel(this)" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:1.5px solid #e5e7eb;border-radius:10px;cursor:pointer;background:white;transition:all .14s;"><span style="font-size:20px;">🌐</span><span style="font-size:13px;font-weight:600;color:#111;">World Language</span><span class="chk" style="margin-left:auto;width:18px;height:18px;border-radius:50%;background:#8a6bfc;color:white;font-size:10px;display:flex;align-items:center;justify-content:center;opacity:0;flex-shrink:0;">✓</span></div><div onclick="sel(this)" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:1.5px solid #e5e7eb;border-radius:10px;cursor:pointer;background:white;transition:all .14s;"><span style="font-size:20px;">🏃</span><span style="font-size:13px;font-weight:600;color:#111;">PE / Health</span><span class="chk" style="margin-left:auto;width:18px;height:18px;border-radius:50%;background:#8a6bfc;color:white;font-size:10px;display:flex;align-items:center;justify-content:center;opacity:0;flex-shrink:0;">✓</span></div><div onclick="sel(this)" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:1.5px solid #e5e7eb;border-radius:10px;cursor:pointer;background:white;transition:all .14s;"><span style="font-size:20px;">🧩</span><span style="font-size:13px;font-weight:600;color:#111;">Special Education</span><span class="chk" style="margin-left:auto;width:18px;height:18px;border-radius:50%;background:#8a6bfc;color:white;font-size:10px;display:flex;align-items:center;justify-content:center;opacity:0;flex-shrink:0;">✓</span></div><div onclick="sel(this)" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:1.5px solid #e5e7eb;border-radius:10px;cursor:pointer;background:white;transition:all .14s;"><span style="font-size:20px;">✏️</span><span style="font-size:13px;font-weight:600;color:#111;">Other</span><span class="chk" style="margin-left:auto;width:18px;height:18px;border-radius:50%;background:#8a6bfc;color:white;font-size:10px;display:flex;align-items:center;justify-content:center;opacity:0;flex-shrink:0;">✓</span></div></div><script>function sel(el){document.querySelectorAll("#sj>div").forEach(c=>{c.style.borderColor="#e5e7eb";c.style.background="white";c.querySelector(".chk").style.opacity="0"});el.style.borderColor="#8a6bfc";el.style.background="#faf8ff";el.querySelector(".chk").style.opacity="1";document.getElementById("btn").disabled=false}</script>
-<div class="cta"><button class="back">← Back</button><button class="btn" id="btn" disabled>Continue →</button></div>
-</div></div></body></html>
+<div class="layout">
+<div class="left"><div class="wordmark">EasyClass<span>AI</span></div>
+<div class="lp-gen-label"><i data-lucide="file-text"></i> Your Lesson Plan</div>
+<div class="lp-box">
+  <div class="lp-ttl">Introduction to Photosynthesis</div>
+  <div class="lp-mt">6th Grade · Science · 45 min</div>
+  <div class="lp-s"><div class="lp-st">Learning Objectives</div>
+<div class="lp-li">Explain the process of photosynthesis and its importance</div>
+<div class="lp-li">Identify inputs (CO₂, water, sunlight) and outputs</div>
+<div class="lp-li">Compare photosynthesis to cellular respiration</div>
+</div>
+<div class="lp-s"><div class="lp-st">Activities</div>
+<div class="lp-li">Leaf chromatography lab — separate pigments using coffee filters</div>
+<div class="lp-li">Class diagram: draw and label the chloroplast<span class="cursor"></span></div>
+</div>
+  <div class="lp-footer">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <span style="font-size:10px;color:#a78bfa;font-weight:600;">58% complete</span>
+      <div class="dp"><span></span><span></span><span></span></div>
+    </div>
+    <div class="lp-pb"><div class="lp-pf" style="width:58%;"></div></div>
+  </div>
+</div></div>
+<div class="right"><div class="prog"><div class="seg on"></div><div class="seg on"></div><div class="seg on"></div><div class="seg on"></div><div class="seg"></div><div class="seg"></div></div><div class="eye">Step 4 of 6</div><h1>Which grades do you teach?</h1><p class="sub">Select all that apply.</p><div id="gp" style="display:grid;grid-template-columns:repeat(8,1fr);gap:8px;"><div class="pill" onclick="tog(this)"><div class="pn">Pre-K</div><div class="ps">4-5</div></div><div class="pill" onclick="tog(this)"><div class="pn">K</div><div class="ps">Kinder</div></div><div class="pill" onclick="tog(this)"><div class="pn">1</div><div class="ps">1st</div></div><div class="pill" onclick="tog(this)"><div class="pn">2</div><div class="ps">2nd</div></div><div class="pill" onclick="tog(this)"><div class="pn">3</div><div class="ps">3rd</div></div><div class="pill" onclick="tog(this)"><div class="pn">4</div><div class="ps">4th</div></div><div class="pill" onclick="tog(this)"><div class="pn">5</div><div class="ps">5th</div></div><div class="pill" onclick="tog(this)"><div class="pn">6</div><div class="ps">6th</div></div><div class="pill" onclick="tog(this)"><div class="pn">7</div><div class="ps">7th</div></div><div class="pill" onclick="tog(this)"><div class="pn">8</div><div class="ps">8th</div></div><div class="pill" onclick="tog(this)"><div class="pn">9</div><div class="ps">9th</div></div><div class="pill" onclick="tog(this)"><div class="pn">10</div><div class="ps">10th</div></div><div class="pill" onclick="tog(this)"><div class="pn">11</div><div class="ps">11th</div></div><div class="pill" onclick="tog(this)"><div class="pn">12</div><div class="ps">12th</div></div><div class="pill" onclick="tog(this)"><div class="pn">SpEd</div><div class="ps">Spec.</div></div><div class="pill" onclick="tog(this)"><div class="pn">ESL</div><div class="ps">Lang.</div></div></div><script>function tog(el){el.classList.toggle("sel");document.getElementById("btn").disabled=document.querySelectorAll("#gp .sel").length===0;}</script>
+<div class="cta"><button class="back-btn"><i data-lucide="arrow-left"></i> Back</button><button class="go-btn" id="btn" disabled><span>Continue</span><i data-lucide="arrow-right"></i></button></div>
+</div></div>
+<script>document.addEventListener('DOMContentLoaded',()=>{if(window.lucide)lucide.createIcons();});</script>
+</body></html>
