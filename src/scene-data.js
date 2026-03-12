@@ -1,135 +1,23 @@
-// All screenshots organized by section
-// Each image references a catbox.moe URL — fetched at runtime and injected as base64
-
-export const SECTIONS = [
-  {
-    id: 'layout-vote',
-    title: '📐 Layout Vote — Option A vs Option B',
-    subtitle: 'Option B (split panel) locked ✅',
-    color: '#94a3b8',
-    x: 0, y: 0,
-    rows: [
-      [
-        { id: 'optA-s1', url: 'https://files.catbox.moe/3sxxl4.png', label: 'Option A — Step 1\n(Single column)', tag: 'REJECTED' },
-        { id: 'optA-s3', url: 'https://files.catbox.moe/hjhigk.png', label: 'Option A — Step 3', tag: 'REJECTED' },
-        null,
-        { id: 'optB-s1', url: 'https://files.catbox.moe/3ef1rn.png', label: 'Option B — Step 1\n(Split panel)', tag: 'LOCKED ✅' },
-        { id: 'optB-s5', url: 'https://files.catbox.moe/3vv6jj.png', label: 'Option B — Step 5', tag: 'LOCKED ✅' },
-      ]
-    ]
-  },
-  {
-    id: 'color-vote',
-    title: '🎨 Left Panel Color Vote',
-    subtitle: 'Option D — Soft Lavender #f3f0ff locked ✅',
-    color: '#c4b5f7',
-    x: 1800, y: 0,
-    rows: [
-      [
-        { id: 'panel-vote', url: 'https://files.catbox.moe/1nz4lg.png', label: 'Color vote — Josh chose\nOption D (Lavender)', tag: 'LOCKED ✅', w: 600 },
-      ]
-    ]
-  },
-  {
-    id: 'wizard-current',
-    title: '🧙 Onboarding Wizard — CURRENT (with persistent roadmap)',
-    subtitle: 'Split panel, lavender left, roadmap always visible, individual K–12 grade pills',
-    color: '#8a6bfc',
-    x: 0, y: 700,
-    rows: [
-      [
-        { id: 'wiz1', url: 'https://files.catbox.moe/jo5v1p.png', label: 'Step 1 — Name' },
-        { id: 'wiz2', url: 'https://files.catbox.moe/m7ingg.png', label: 'Step 2 — Role' },
-        { id: 'wiz3', url: 'https://files.catbox.moe/1dpge0.png', label: 'Step 3 — Grade' },
-        { id: 'wiz4', url: 'https://files.catbox.moe/dq0uzv.png', label: 'Step 4 — Subject' },
-        { id: 'wiz5', url: 'https://files.catbox.moe/jls496.png', label: 'Step 5 — Topic' },
-        { id: 'gen',  url: 'https://files.catbox.moe/2f2yzj.png', label: '⚡ Generation Screen', tag: 'LP fires first' },
-      ]
-    ],
-    arrows: [[0,1],[1,2],[2,3],[3,4],[4,5]],
-    arrowColor: '#8a6bfc',
-  },
-  {
-    id: 'tour-current',
-    title: '🎯 Dashboard Tour — CURRENT (pixel-perfect real dashboard)',
-    subtitle: 'Spotlight coordinates pulled from live DOM. Stop 3 = proposed "Generate All" button.',
-    color: '#4ade80',
-    x: 0, y: 1500,
-    rows: [
-      [
-        { id: 't1', url: 'https://files.catbox.moe/rnt663.png', label: 'Tour Stop 1\nLP Row spotlight' },
-        { id: 't2', url: 'https://files.catbox.moe/a8uacv.png', label: 'Tour Stop 2\n5 resource dots' },
-        { id: 't3', url: 'https://files.catbox.moe/tma75x.png', label: 'Tour Stop 3\n⚡ Generate All (new)', tag: 'PROPOSED' },
-        { id: 't4', url: 'https://files.catbox.moe/x3isxw.png', label: 'Tour Stop 4\nNew Lesson Plan btn' },
-        { id: 't5', url: 'https://files.catbox.moe/cudu30.png', label: 'Tour Stop 5\nDisplay Boards → Pro' },
-      ]
-    ],
-    arrows: [[0,1],[1,2],[2,3],[3,4]],
-    arrowColor: '#4ade80',
-  },
-  {
-    id: 'tour-v1',
-    title: '🎯 Dashboard Tour — v1 (original 3 stops)',
-    subtitle: 'First iteration before pixel-perfect overlays',
-    color: '#94a3b8',
-    x: 0, y: 2200,
-    rows: [
-      [
-        { id: 'tour-s1-orig', url: 'https://files.catbox.moe/ld5tda.png', label: 'v1 Stop 1 — LP Row' },
-        { id: 'tour-s2-orig', url: 'https://files.catbox.moe/jb1zrk.png', label: 'v1 Stop 2 — Quick Gen' },
-        { id: 'tour-paywall', url: 'https://files.catbox.moe/u3u3hp.png', label: 'v1 Stop 3 — Pro Paywall' },
-      ]
-    ],
-    arrows: [[0,1],[1,2]],
-    arrowColor: '#94a3b8',
-  },
-  {
-    id: 'storyboard',
-    title: '📊 Flow Storyboard v2 — Full Journey Map',
-    subtitle: 'Overview: wizard → generation → tour → paywall with all 5 resource types (WORK/PRES/READ/QUIZ/RUBR)',
-    color: '#fe69ea',
-    x: 2200, y: 700,
-    rows: [
-      [
-        { id: 'flow-top',    url: 'https://files.catbox.moe/ec1722.png', label: 'Storyboard — Top half\n(Wizard + Gen screen + Tour stops 1–2)', w: 700 },
-        { id: 'flow-bottom', url: 'https://files.catbox.moe/dwuuam.png', label: 'Storyboard — Bottom half\n(5 quick-generate resource cards)', w: 700 },
-      ]
-    ]
-  },
-]
-
-export const W_DEFAULT = 480
-export const H_DEFAULT = 300
-export const GAP_X = 50
+export const W_DEFAULT = 576
+export const H_DEFAULT = 360
+export const GAP_X = 60
 export const GAP_Y = 80
-export const SECTION_HEADER_H = 110
+export const SECTION_HEADER_H = 80
 
-// LOCKED final screen
-SECTIONS.push({
-  id: 'locked-final',
-  title: '🔒 LOCKED — Final Onboarding Screen (Full-Screen, Beam Spider, Real Logo)',
-  subtitle: 'THIS IS THE ONE. Full-screen split panel. Perfecting this before any production code.',
-  color: '#4ade80',
-  x: 0, y: 3100,
-  rows: [[
-    { id: 'beam-final', url: 'https://files.catbox.moe/kgaikk.png', label: 'Step 5 — Topic input\nBeam spider left panel + resource grid right', tag: 'LOCKED ✅', w: 720, h: 450 },
-  ]],
-})
+export const SECTIONS = []
 
-// ── FULL FLOW MAP (all 5 screens, linked) ──
+// ── THE FLOW: 5 screens, full-screen split panel, lavender sidebar + roadmap ──
 SECTIONS.push({
-  id: 'flow-map',
-  title: '🗺️ Full Onboarding Flow — Click any screen to open it live',
-  subtitle: 'All 5 steps + generation. Full-screen split panel. Click → opens the interactive prototype.',
+  id: 'onboarding-flow',
+  title: '✅ Onboarding 2.0 — Full Flow (Full Screen, Lavender Sidebar, Persistent Roadmap)',
+  subtitle: 'Click any screen to open it live and interactive',
   color: '#8a6bfc',
-  x: 0, y: 3800,
-  arrows: [[0,1],[1,2],[2,3],[3,4]],
-  arrowColor: '#8a6bfc',
+  x: 0, y: 0,
   rows: [[
-    { id: 'flow-s1', url: 'https://files.catbox.moe/y9mpj0.png', label: 'Screen 1 — Role Selection', tag: 'Step 1 of 5', w: 576, h: 360, link: 'https://easyclass-onboarding-flow.netlify.app/screen1.html' },
-    { id: 'flow-s2', url: 'https://files.catbox.moe/lmct3t.png', label: 'Screen 2 — Grade Levels',  tag: 'Step 2 of 5', w: 576, h: 360, link: 'https://easyclass-onboarding-flow.netlify.app/screen2.html' },
-    { id: 'flow-s3', url: 'https://files.catbox.moe/rz54x0.png', label: 'Screen 3 — Subject',       tag: 'Step 3 of 5', w: 576, h: 360, link: 'https://easyclass-onboarding-flow.netlify.app/screen3.html' },
-    { id: 'flow-s4', url: 'https://files.catbox.moe/o0nhgj.png', label: 'Screen 4 — Topic Input',   tag: 'Step 4 of 5', w: 576, h: 360, link: 'https://easyclass-onboarding-flow.netlify.app/screen4.html' },
-    { id: 'flow-s5', url: 'https://files.catbox.moe/kgaikk.png', label: 'Screen 5 — Generation',   tag: 'Step 5 ✨ LOCKED', w: 576, h: 360, link: 'https://easyclass-onboarding-flow.netlify.app/screen5.html' },
+    { id: 'sc1', url: 'https://files.catbox.moe/v3k5ih.png', label: 'Screen 1 — Name',    tag: 'Step 1', w: 576, h: 360, link: 'https://easyclass-onboarding-flow.netlify.app/s1-clean.html' },
+    { id: 'sc2', url: 'https://files.catbox.moe/v9gard.png', label: 'Screen 2 — Role',    tag: 'Step 2', w: 576, h: 360, link: 'https://easyclass-onboarding-flow.netlify.app/s2-clean.html' },
+    { id: 'sc3', url: 'https://files.catbox.moe/v9rry1.png', label: 'Screen 3 — Grades',  tag: 'Step 3', w: 576, h: 360, link: 'https://easyclass-onboarding-flow.netlify.app/s3-clean.html' },
+    { id: 'sc4', url: 'https://files.catbox.moe/f4kvm6.png', label: 'Screen 4 — Subject', tag: 'Step 4', w: 576, h: 360, link: 'https://easyclass-onboarding-flow.netlify.app/s4-clean.html' },
+    { id: 'sc5', url: 'https://files.catbox.moe/n77z9c.png', label: 'Screen 5 — Topic + Generate', tag: 'Step 5 ✨', w: 576, h: 360, link: 'https://easyclass-onboarding-flow.netlify.app/s5-clean.html' },
   ]],
 })
