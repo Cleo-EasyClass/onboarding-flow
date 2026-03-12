@@ -115,3 +115,21 @@ SECTIONS.push({
     { id: 'beam-final', url: 'https://files.catbox.moe/kgaikk.png', label: 'Step 5 — Topic input\nBeam spider left panel + resource grid right', tag: 'LOCKED ✅', w: 720, h: 450 },
   ]],
 })
+
+// ── FULL FLOW MAP (all 5 screens, linked) ──
+SECTIONS.push({
+  id: 'flow-map',
+  title: '🗺️ Full Onboarding Flow — Click any screen to open it live',
+  subtitle: 'All 5 steps + generation. Full-screen split panel. Click → opens the interactive prototype.',
+  color: '#8a6bfc',
+  x: 0, y: 3800,
+  arrows: [[0,1],[1,2],[2,3],[3,4]],
+  arrowColor: '#8a6bfc',
+  rows: [[
+    { id: 'flow-s1', url: 'https://files.catbox.moe/y9mpj0.png', label: 'Screen 1 — Role Selection', tag: 'Step 1 of 5', w: 576, h: 360, link: 'https://easyclass-onboarding-flow.netlify.app/screen1.html' },
+    { id: 'flow-s2', url: 'https://files.catbox.moe/lmct3t.png', label: 'Screen 2 — Grade Levels',  tag: 'Step 2 of 5', w: 576, h: 360, link: 'https://easyclass-onboarding-flow.netlify.app/screen2.html' },
+    { id: 'flow-s3', url: 'https://files.catbox.moe/rz54x0.png', label: 'Screen 3 — Subject',       tag: 'Step 3 of 5', w: 576, h: 360, link: 'https://easyclass-onboarding-flow.netlify.app/screen3.html' },
+    { id: 'flow-s4', url: 'https://files.catbox.moe/o0nhgj.png', label: 'Screen 4 — Topic Input',   tag: 'Step 4 of 5', w: 576, h: 360, link: 'https://easyclass-onboarding-flow.netlify.app/screen4.html' },
+    { id: 'flow-s5', url: 'https://files.catbox.moe/kgaikk.png', label: 'Screen 5 — Generation',   tag: 'Step 5 ✨ LOCKED', w: 576, h: 360, link: 'https://easyclass-onboarding-flow.netlify.app/screen5.html' },
+  ]],
+})

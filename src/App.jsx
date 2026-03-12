@@ -89,7 +89,7 @@ async function buildScene(onProgress) {
             strokeWidth: 2, strokeStyle: 'solid', roughness: 0, opacity: 100,
             groupIds: [], frameId: null, roundness: null,
             seed: 1, version: 1, isDeleted: false, angle: 0,
-            boundElements: [], updated: 1, link: null, locked: false,
+            boundElements: [], updated: 1, link: item.link || null, locked: false,
           })
           const labelText = item.label + (item.tag ? `\n[${item.tag}]` : '')
           elements.push({
