@@ -103,3 +103,15 @@ export const H_DEFAULT = 300
 export const GAP_X = 50
 export const GAP_Y = 80
 export const SECTION_HEADER_H = 110
+
+// LOCKED final screen
+SECTIONS.push({
+  id: 'locked-final',
+  title: '🔒 LOCKED — Final Onboarding Screen (Full-Screen, Beam Spider, Real Logo)',
+  subtitle: 'THIS IS THE ONE. Full-screen split panel. Perfecting this before any production code.',
+  color: '#4ade80',
+  x: 0, y: 3100,
+  rows: [[
+    { id: 'beam-final', url: 'https://files.catbox.moe/kgaikk.png', label: 'Step 5 — Topic input\nBeam spider left panel + resource grid right', tag: 'LOCKED ✅', w: 720, h: 450 },
+  ]],
+})
