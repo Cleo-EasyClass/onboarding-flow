@@ -346,5 +346,63 @@
   <a href="https://onboarding-2-0-3-12--ezteach12324.netlify.app" target="_blank" style="color:#8a6bfc">Live branch deploy ↗</a>
 </div>
 
+
+<hr />
+
+<div class="step-group">
+  <div class="section-header">Admin Path — Branches at Step 2</div>
+  <div class="step-title">Admin / Coach → School Setup</div>
+  <div class="step-desc">When user selects "Admin / Coach" on Step 2 and clicks Continue, they branch off the teacher path into a 3-screen school setup flow.</div>
+  <div class="screens">
+    <div class="screen-card">
+      <div class="screen-label">Step 2 — Admin selected</div>
+      <img src="screenshots/admin-s2-role-admin-selected.png" alt="Admin role selected" />
+      <div class="notes">
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> "Admin / Coach" card highlighted. Continue now active.</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Click Continue — should skip Grade/Subject/Topic and go straight to school setup.</div></div>
+      </div>
+    </div>
+    <div class="screen-card">
+      <div class="screen-label">Admin A1 — Tell us about your school (empty)</div>
+      <img src="screenshots/admin-a1-school-info-empty.png" alt="School info empty" />
+      <div class="notes">
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> School name search field, Admin Role chips, Teacher Count chips all visible.</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> "Create school workspace" button should be disabled until school name is filled.</div></div>
+        <div class="note"><div class="note-icon polish">P</div><div class="note-text"><strong>Polish:</strong> Left panel still shows teacher roadmap steps — should these be different for admin path?</div></div>
+      </div>
+    </div>
+    <div class="screen-card">
+      <div class="screen-label">Admin A1 — NCES autocomplete</div>
+      <img src="screenshots/admin-a1-school-autocomplete.png" alt="School autocomplete" />
+      <div class="notes">
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> NCES school autocomplete dropdown fires when typing. Shows real school names + locations.</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Select a school from dropdown — city, state, enrollment should auto-populate (stored in DB).</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> "Can't find your school? Enter name manually" — should let user bypass NCES lookup.</div></div>
+      </div>
+    </div>
+    <div class="screen-card">
+      <div class="screen-label">Admin A1 — Form filled, ready to create</div>
+      <img src="screenshots/admin-a1-ready.png" alt="School info filled" />
+      <div class="notes">
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> "Create school workspace →" button is active (enabled).</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Click Create — should show loading spinner screen (StepSchoolCreating) while API creates the school.</div></div>
+        <div class="note"><div class="note-icon warn">!</div><div class="note-text"><strong>Watch:</strong> This hits /api/schools/create — creates a REAL school in DB. Test with disposable account in staging.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="step-group">
+  <div class="section-header">Admin A2 + A3 — Need Manual Testing</div>
+  <div class="step-title">School Creating + Invite Screens</div>
+  <div class="step-desc">These screens auto-fire after "Create school workspace" is clicked. Not screenshotted to avoid creating real schools in the production DB.</div>
+  <div class="notes" style="background:#16161e;border:1px solid #22222e;border-radius:10px;padding:16px;">
+    <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Admin A2 — StepSchoolCreating:</strong> Shows a "Creating your workspace…" spinner. API fires automatically. On success → advances to invite screen. On error → back to school info.</div></div>
+    <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Admin A3 — StepSchoolInvite:</strong> Shows the school's invite link + EmailInviteWidget (up to 10 email addresses). "Done" completes onboarding → redirects to /school/dashboard.</div></div>
+    <div class="note"><div class="note-icon warn">!</div><div class="note-text"><strong>Test these manually</strong> on the branch deploy with a fresh account. Use a school name that won't conflict with existing schools.</div></div>
+    <div class="note"><div class="note-icon bug">B</div><div class="note-text"><strong>Known:</strong> Admin path left panel still shows teacher roadmap steps (not admin-specific steps). Low priority visual issue.</div></div>
+  </div>
+</div>
+
 </body>
 </html>
