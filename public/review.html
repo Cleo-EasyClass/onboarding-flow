@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onboarding 2.0 — QA Review Flow</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0f0f13; color: #e8e6f0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 40px 24px; }
+    h1 { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .subtitle { color: #888; font-size: 14px; margin-bottom: 48px; }
+    .subtitle a { color: #8a6bfc; text-decoration: none; }
+    .subtitle a:hover { text-decoration: underline; }
+    
+    .section-header {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; color: #8a6bfc; margin-bottom: 16px;
+      padding-bottom: 8px; border-bottom: 1px solid #1e1e2a;
+    }
+
+    .step-group { margin-bottom: 64px; }
+    .step-title { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .step-desc { font-size: 13px; color: #888; margin-bottom: 20px; line-height: 1.5; }
+
+    .screens { display: grid; grid-template-columns: repeat(auto-fill, minmax(640px, 1fr)); gap: 24px; }
+    .screen-card {
+      background: #16161e; border: 1px solid #22222e; border-radius: 12px;
+      overflow: hidden; position: relative;
+    }
+    .screen-label {
+      position: absolute; top: 12px; left: 12px; z-index: 2;
+      background: rgba(0,0,0,0.7); color: #fff; font-size: 11px; font-weight: 600;
+      padding: 4px 10px; border-radius: 20px; backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .screen-card img { display: block; width: 100%; height: auto; }
+    
+    .notes { padding: 16px; border-top: 1px solid #22222e; }
+    .note {
+      display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start;
+    }
+    .note:last-child { margin-bottom: 0; }
+    .note-icon {
+      width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; margin-top: 1px;
+    }
+    .note-icon.test { background: #1e3a5f; color: #60a5fa; }
+    .note-icon.check { background: #14322a; color: #34d399; }
+    .note-icon.warn { background: #3d2a10; color: #fb923c; }
+    .note-icon.bug { background: #3d1010; color: #f87171; }
+    .note-icon.polish { background: #2a1e3d; color: #c084fc; }
+    .note-text { font-size: 13px; color: #bbb; line-height: 1.5; }
+    .note-text strong { color: #e8e6f0; }
+
+    .progress-bar {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px;
+    }
+    .pill {
+      padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;
+    }
+    .pill.done { background: #14322a; color: #34d399; }
+    .pill.check { background: #1e3a5f; color: #60a5fa; }
+    .pill.qa { background: #2a1e3d; color: #c084fc; }
+
+    hr { border: none; border-top: 1px solid #1e1e2a; margin: 48px 0; }
+    .branch-info {
+      background: #16161e; border: 1px solid #22222e; border-radius: 10px;
+      padding: 16px 20px; margin-bottom: 40px; font-size: 13px; color: #888;
+    }
+    .branch-info strong { color: #e8e6f0; }
+    .branch-info a { color: #8a6bfc; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<h1>🧙 Onboarding 2.0 — QA Review</h1>
+<p class="subtitle">Live screenshots from branch deploy · <a href="https://onboarding-2-0-3-12--ezteach12324.netlify.app" target="_blank">onboarding-2-0-3-12--ezteach12324.netlify.app ↗</a> · Captured March 13, 2026</p>
+
+<div class="branch-info">
+  <strong>Branch:</strong> <code>onboarding-2.0-3-12</code> &nbsp;·&nbsp;
+  <strong>HEAD:</strong> <code>ea0cd22a</code> &nbsp;·&nbsp;
+  <strong>Status:</strong> <span style="color:#34d399">✅ Build Passing</span> &nbsp;·&nbsp;
+  <strong>Build:</strong> <a href="https://onboarding-2-0-3-12--ezteach12324.netlify.app" target="_blank">Branch Deploy ↗</a>
+</div>
+
+<div class="progress-bar">
+  <span class="pill done">✅ 7-step wizard built</span>
+  <span class="pill done">✅ LP streaming</span>
+  <span class="pill done">✅ Admin path</span>
+  <span class="pill done">✅ Dashboard tour</span>
+  <span class="pill done">✅ No gradients</span>
+  <span class="pill done">✅ Real logo</span>
+  <span class="pill done">✅ Bug audit complete</span>
+  <span class="pill check">🔵 Jordan QA in progress</span>
+  <span class="pill qa">🟣 Pending merge to main</span>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-group">
+  <div class="section-header">Step 1 of 7</div>
+  <div class="step-title">Your Name</div>
+  <div class="step-desc">First screen the user sees. Name is required, last name + school are optional. Continue disabled until first name has at least 1 character.</div>
+  <div class="screens">
+    <div class="screen-card">
+      <div class="screen-label">Empty state</div>
+      <img src="screenshots/s1-name-empty.png" alt="Step 1 - empty" />
+      <div class="notes">
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Continue button should be disabled. Click it — nothing should happen.</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> School field should show NCES autocomplete dropdown when typing a real school name.</div></div>
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> EasyClass logo appears in left sidebar (not gradient text).</div></div>
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> Progress bar at top — should be near 0%.</div></div>
+        <div class="note"><div class="note-icon polish">P</div><div class="note-text"><strong>Polish:</strong> "Takes about 2 minutes" copy at bottom of roadmap — is it the right tone?</div></div>
+      </div>
+    </div>
+    <div class="screen-card">
+      <div class="screen-label">Filled</div>
+      <img src="screenshots/s1-name-filled.png" alt="Step 1 - filled" />
+      <div class="notes">
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> Continue button is now active (purple, not faded).</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Press Enter key — should advance to step 2.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-group">
+  <div class="section-header">Step 2 of 7</div>
+  <div class="step-title">Your Role</div>
+  <div class="step-desc">Four role cards. Selecting "Admin / Coach" triggers the admin branch (school creation flow). Other roles continue the teacher path.</div>
+  <div class="screens">
+    <div class="screen-card">
+      <div class="screen-label">Empty state</div>
+      <img src="screenshots/s2-role-empty.png" alt="Step 2 - empty" />
+      <div class="notes">
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Continue disabled — no role selected yet.</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Click "Admin / Coach" — should branch to school creation path (different screens).</div></div>
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> Step 1 in roadmap shows green checkmark.</div></div>
+      </div>
+    </div>
+    <div class="screen-card">
+      <div class="screen-label">Role selected</div>
+      <img src="screenshots/s2-role-selected.png" alt="Step 2 - selected" />
+      <div class="notes">
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> Selected card has visual highlight (border, bg change).</div></div>
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> Continue now active.</div></div>
+        <div class="note"><div class="note-icon polish">P</div><div class="note-text"><strong>Polish:</strong> Card labels — "Classroom Teacher", "Specialist", "Curriculum Designer", "Admin / Coach". Are these the right labels?</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-group">
+  <div class="section-header">Step 3 of 7</div>
+  <div class="step-title">Grade Level</div>
+  <div class="step-desc">K–12 pill selector, multi-select. Also includes SpEd and ESL options. At least one grade required to continue.</div>
+  <div class="screens">
+    <div class="screen-card">
+      <div class="screen-label">Empty</div>
+      <img src="screenshots/s3-grade-empty.png" alt="Step 3 - empty" />
+      <div class="notes">
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Continue disabled. Select K only — Continue should enable.</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Select multiple grades — counter shows "X grades selected".</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Click a selected grade again — should deselect it.</div></div>
+        <div class="note"><div class="note-icon polish">P</div><div class="note-text"><strong>Polish:</strong> SpEd / ESL pills — do they visually stand out from K-12 grades?</div></div>
+      </div>
+    </div>
+    <div class="screen-card">
+      <div class="screen-label">Multi-selected</div>
+      <img src="screenshots/s3-grade-selected.png" alt="Step 3 - selected" />
+      <div class="notes">
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> Selected pills appear highlighted. "X grades selected" counter visible.</div></div>
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> Continue is active.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-group">
+  <div class="section-header">Step 4 of 7</div>
+  <div class="step-title">Your Subject</div>
+  <div class="step-desc">Single-select subject cards. 10 subjects. Selecting one immediately enables Continue.</div>
+  <div class="screens">
+    <div class="screen-card">
+      <div class="screen-label">Empty</div>
+      <img src="screenshots/s4-subject-empty.png" alt="Step 4 - empty" />
+      <div class="notes">
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Continue disabled until a subject is tapped.</div></div>
+        <div class="note"><div class="note-icon polish">P</div><div class="note-text"><strong>Polish:</strong> Are all 10 subjects visible without scrolling? Check on smaller screens.</div></div>
+      </div>
+    </div>
+    <div class="screen-card">
+      <div class="screen-label">Subject selected</div>
+      <img src="screenshots/s4-subject-selected.png" alt="Step 4 - selected" />
+      <div class="notes">
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> Selected card highlighted. Only one can be selected at a time.</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Select Math, then switch to ELA — only ELA should be highlighted.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-group">
+  <div class="section-header">Step 5 of 7</div>
+  <div class="step-title">Your Topic — LP Fires Here</div>
+  <div class="step-desc">Textarea for topic. Example topics shown as chips. "Start building" fires LP generation in background. Left panel still shows roadmap until LP fires (fixed bug).</div>
+  <div class="screens">
+    <div class="screen-card">
+      <div class="screen-label">Empty (roadmap still visible)</div>
+      <img src="screenshots/s5-topic-empty.png" alt="Step 5 - empty" />
+      <div class="notes">
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> Roadmap is still in left panel (not LP stream). Bug was fixed — LP panel only appears after topic is submitted.</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> "Start building" button disabled when textarea is empty.</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Click an example topic chip — should populate the textarea.</div></div>
+      </div>
+    </div>
+    <div class="screen-card">
+      <div class="screen-label">Topic typed</div>
+      <img src="screenshots/s5-topic-typed.png" alt="Step 5 - typed" />
+      <div class="notes">
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> "Start building" button is now active.</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Click "Start building" — LP API call fires, left panel transitions to LP stream, user advances to step 6.</div></div>
+        <div class="note"><div class="note-icon warn">!</div><div class="note-text"><strong>Watch:</strong> Going back from step 6 and clicking "Start building" again should NOT re-fire LP (double-fire guard in place).</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5b - LP TRANSITION -->
+<div class="step-group">
+  <div class="section-header">Step 5 → 6 Transition</div>
+  <div class="step-title">LP Generation Started</div>
+  <div class="step-desc">Immediately after clicking "Start building". Left panel transitions from roadmap to LP stream. Skeleton pulses while first sections arrive.</div>
+  <div class="screens">
+    <div class="screen-card">
+      <div class="screen-label">LP generating — skeleton state</div>
+      <img src="screenshots/s5b-lp-started.png" alt="LP started" />
+      <div class="notes">
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> Left panel now shows LP card with topic + grade + subject.</div></div>
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> Skeleton pulse animation visible. Spinner on LP title.</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Sections should start populating within 5–10 seconds. Progress % should increase.</div></div>
+        <div class="note"><div class="note-icon warn">!</div><div class="note-text"><strong>Watch:</strong> If LP fails (90s timeout) — "finishing up" message should appear. Continue should still be enabled.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-group">
+  <div class="section-header">Step 6 of 7</div>
+  <div class="step-title">How Found Us</div>
+  <div class="step-desc">LP generating in left panel while user selects referral source. Continue disabled while LP is still generating (prevents rushing past). Re-enables when LP completes or fails.</div>
+  <div class="screens">
+    <div class="screen-card">
+      <div class="screen-label">LP generating, source not selected</div>
+      <img src="screenshots/s6-source-lp-generating.png" alt="Step 6 - generating" />
+      <div class="notes">
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> LP sections streaming live in left panel.</div></div>
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> Continue button disabled + "generating" banner visible below source options.</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Select a source — Continue should still be disabled while LP generates.</div></div>
+      </div>
+    </div>
+    <div class="screen-card">
+      <div class="screen-label">Source selected</div>
+      <img src="screenshots/s6-source-selected.png" alt="Step 6 - selected" />
+      <div class="notes">
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> Selected option highlighted.</div></div>
+        <div class="note"><div class="note-icon polish">P</div><div class="note-text"><strong>Polish:</strong> 9 source options — correct list? "Podcast / YouTube" feels niche. Maybe "YouTube" alone?</div></div>
+      </div>
+    </div>
+    <div class="screen-card">
+      <div class="screen-label">LP complete — Continue unlocked</div>
+      <img src="screenshots/s6-source-lp-complete.png" alt="Step 6 - LP complete" />
+      <div class="notes">
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> LP shows 100% + green ✅ checkmark. Continue is now enabled.</div></div>
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> Green banner: "Your lesson plan is ready!" replaces generating banner.</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Continue without selecting a source — should it be allowed? (Currently source is optional)</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-group">
+  <div class="section-header">Step 7 of 7 (bonus)</div>
+  <div class="step-title">Colleague Invite</div>
+  <div class="step-desc">Referral code auto-generated if user doesn't have one. Two cards: share link and inline school setup. Can skip. LP should be fully complete by now.</div>
+  <div class="screens">
+    <div class="screen-card">
+      <div class="screen-label">Colleague invite</div>
+      <img src="screenshots/s7-colleague-invite.png" alt="Step 7" />
+      <div class="notes">
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Referral code should be auto-generated and visible. Copy link should work.</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> "Set up your school" inline card — clicking should expand the school creation form.</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> "Done" / "Skip" button — should complete onboarding and redirect to /dashboard?tour=true</div></div>
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> LP panel on left shows completed lesson plan.</div></div>
+        <div class="note"><div class="note-icon polish">P</div><div class="note-text"><strong>Polish:</strong> "Not right now" skip copy — tone ok? Should it feel more inviting?</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="step-group">
+  <div class="section-header">Post-Wizard</div>
+  <div class="step-title">Dashboard — After Onboarding</div>
+  <div class="step-desc">User lands here after completing the wizard. Dashboard tour should auto-start (5 stops). GettingStartedWidget checklist visible. Lesson plan from wizard should appear in Lessons tab.</div>
+  <div class="screens">
+    <div class="screen-card">
+      <div class="screen-label">Dashboard post-wizard</div>
+      <img src="screenshots/s8-dashboard-post-wizard.png" alt="Dashboard" />
+      <div class="notes">
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> URL should be /dashboard?tour=true on arrival. Tour should auto-start after ~800ms.</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Tour stop 1 — highlights the lesson plan row. Tooltip appears above it.</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Tour stop 4 — AI Tools nav. Tour stop 5 (Upgrade) only shows if flow setting enabled.</div></div>
+        <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> GettingStartedWidget checklist shows in sidebar. "Create a lesson plan" should already be checked ✅.</div></div>
+        <div class="note"><div class="note-icon check">✓</div><div class="note-text"><strong>Check:</strong> Lesson plan created during wizard is visible in the Lessons tab with correct topic/grade/subject.</div></div>
+        <div class="note"><div class="note-icon warn">!</div><div class="note-text"><strong>Watch:</strong> Dashboard has a known error state — if lesson plans query fails, "Dashboard Error" banner shows. This is pre-existing, not wizard-related.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div class="step-group">
+  <div class="section-header">Admin Path (not yet screenshotted)</div>
+  <div class="step-title">Admin / School Setup Flow</div>
+  <div class="step-desc">Branches from Step 2 when "Admin / Coach" is selected. Three steps: School Name (NCES autocomplete), School Creating (auto-fires API), School Invite (email invite widget). Redirects to /school/dashboard on complete.</div>
+  <div class="notes" style="background:#16161e;border:1px solid #22222e;border-radius:10px;padding:16px;">
+    <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> Select "Admin / Coach" on step 2 → should skip to school info screens.</div></div>
+    <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> NCES school autocomplete — type a real school name and verify federal data populates (city, state, enrollment).</div></div>
+    <div class="note"><div class="note-icon test">T</div><div class="note-text"><strong>Test:</strong> School creation — auto-fires, generates invite code. Should redirect to /school/dashboard.</div></div>
+    <div class="note"><div class="note-icon warn">!</div><div class="note-text"><strong>Watch:</strong> School creation requires valid school data. Test with a real school from NCES autocomplete.</div></div>
+  </div>
+</div>
+
+<hr />
+
+<div style="color:#555;font-size:12px;text-align:center;padding:24px 0;">
+  Screenshots captured March 13, 2026 · Branch <code>onboarding-2.0-3-12</code> · HEAD ea0cd22a · 
+  <a href="https://onboarding-2-0-3-12--ezteach12324.netlify.app" target="_blank" style="color:#8a6bfc">Live branch deploy ↗</a>
+</div>
+
+</body>
+</html>
